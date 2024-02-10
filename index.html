@@ -11,8 +11,7 @@
 </head>
 <style>
     .borders {
-        border: 4px solid #ffffff !important;
-        background-color: #d3f70b;
+        border: 1px solid #ffffff !important;
         border-radius: 7px;
         -webkit-box-shadow: 0px 0px 93px 35px rgba(92, 51, 145, 0.66);
         -moz-box-shadow: 0px 0px 93px 35px rgba(92, 51, 145, 0.66);
@@ -24,16 +23,79 @@
         font-weight: 500;
     }
 
-    body {
-        margin: 0;
-        padding: 0;
-        color: #e5fd0f;
+    .hoşgeldiniz {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         background-color: #000000;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        font-size: 36px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+        z-index: 1;
+        /* Diğer içeriklerin üzerinde olacak şekilde z-index değeri */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.3),
+            0 0 40px rgba(255, 255, 255, 0.3);
+        opacity: 0.96;
+        /* Başlangıçta sayfanın görünürlüğünü sıfırla */
+        transition: opacity 7s ease-in-out;
+        /* Opaklığı 1 saniyede yumuşak bir şekilde değiştir */
     }
 
+    .hoşgeldiniz.show {
+        opacity: 1;
+    }
+
+    .arkaPlan {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        z-index: 0;
+        /* Arkaplan içeriklerin altında olacak şekilde z-index değeri */
+    }
+
+    body {
+        background-color: #000000;
+        /* Siyah arka plan */
+        color: #ffffff;
+        /* Beyaz metin rengi */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        opacity: 0;
+        /* Başlangıçta sayfanın görünürlüğünü sıfırla */
+        transition: opacity 3s ease-in-out;
+        /* Opaklığı 1 saniyede yumuşak bir şekilde değiştir */
+    }
+
+    body.show {
+        opacity: 1;
+    }
+
+
     .ibanbtn {
-        background-color: rgb(49, 51, 70);
+        border: 1px solid white !important;
+        color: aliceblue;
+        background: none;
+    }
+
+    .ibanbtn a {
         color: aliceblue;
     }
 
@@ -42,48 +104,160 @@
     }
 
 
-    .btn{
+    .btn {
         font-family: inherit;
     }
 
+    .bg {
+        animation: slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+        bottom: 0;
+        left: -50%;
+        opacity: .5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+    }
+
+    .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 4s;
+    }
+
+    .bg3 {
+        animation-duration: 5s;
+    }
+
+    .content {
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: .25em;
+        box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+        box-sizing: border-box;
+        left: 50%;
+        padding: 10vmin;
+        position: fixed;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h1 {
+        font-family: monospace;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(-25%);
+        }
+
+        100% {
+            transform: translateX(25%);
+        }
+    }
+
+    .bordersfs {
+        border: none !important;
+    }
 </style>
 
 <body>
-
-    <div class="container  p-5 pt-0">
-        <div class="row borders">
-            <div class="col-md-4 d-flex justify-content-center">
-                <!-- Kişinin resmi -->
-                <div class="col-md-12 d-flex justify-content-center"> <img height="140px" width="160px" src="serdar.png"
-                        alt="Kişi Resmi" class="rounded-circle mt-3"> </div>
-            </div>
-            <div class="col-md-8 p-3">
-                <!-- Kişisel bilgiler -->
-                <h3 class="text-center nazaropt text-white">NAZAR OPTİK</h3>
-                <!-- Sosyal medya butonları -->
-                <div class="mt-4">
-                    <a href="https://www.instagram.com/nazar_saglik/" class="btn btn-danger w-100 mt-2"
-                        target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://wa.me/+905326266756" class="btn btn-success w-100 mt-2" target="_blank"><i
-                            class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <a href="iban.html" class="btn ibanbtn w-100 mt-2" target="_blank"><i
-                            class="fas fa-money-bill-alt"></i>&nbsp; İban bilgileri</a>
-                    <button class="btn btn-primary w-100 mt-2" onclick="sendMail()"><i class="fas fa-envelope"></i> Mail
-                        Adresi</button>
-
-
-                    <!-- Diğer sosyal medya butonları buraya eklenebilir -->
+    <div class="arkaPlan">
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="container  p-5 pt-0">
+            <div class="row borders">
+                <div class="col-md-4 d-flex justify-content-center">
+                    <!-- Kişinin resmi -->
+                    <div class="col-md-12 d-flex justify-content-center"> <img height="140px" width="160px"
+                            src="serdar.png" alt="Kişi Resmi" class="rounded-circle mt-3"> </div>
                 </div>
+                <div class="col-md-8 p-3">
+                    <!-- Kişisel bilgiler -->
+                    <h3 class="text-center nazaropt text-white">NAZAR OPTİK</h3>
+                    <!-- Sosyal medya butonları -->
+                    <div class="mt-4">
 
-                <!-- Yol tarifi al butonu -->
-                <div class="mt-2">
-                    <a href="https://www.google.com/maps?s=web&lqi=CgtuYXphciBvcHRpa0iJvKjT55WAgAhaHRAAEAEYABgBIgtuYXphciBvcHRpayoGCAIQABABkgEIb3B0aWNpYW6qAUYQASoPIgtuYXphciBvcHRpayghMiAQASIc7Xwxb-QTh8_83TaUYUKN7oDAkwg9WJcEE6IUwzIPEAIiC25hemFyIG9wdGlr&vet=12ahUKEwji7aa54JmEAxUd_rsIHSiLAi4Q1YkKegQIDxAB..i&cs=0&um=1&ie=UTF-8&fb=1&gl=tr&sa=X&geocode=KaXL7qh18ycVMQ9S5ObpT0Mr&daddr=%C4%B0hsaniye,+Sait+%C3%87ift%C3%A7i+Cd.+No:3,+33070+Akdeniz/Mersin"
-                        class="btn btn-warning w-100" target="_blank"> <i class="fas fa-map-marker-alt"></i>&nbsp; Yol
-                        Tarifi Al</a>
+                        <div class="ibanbtn btn  w-100 mt-2 d-flex justify-content-center align-items-center col-md-12">
+                            <div class="col-md-3 d-flex justify-content-end pr-0"> <img
+                                    src="instagram-1-svgrepo-com.svg" width="21px" alt=""></div>
+                            <div class="col-md-9 d-flex justify-content-start mr-5"><a
+                                    href="https://www.instagram.com/nazar_saglik/" target="_blank">
+                                    Instagram</a></div>
+                        </div>
+
+                        <div class="ibanbtn btn  w-100 mt-2 d-flex justify-content-center align-items-center col-md-12">
+                            <div class="col-md-3 d-flex justify-content-end pr-0"> <img
+                                    src="whatsapp-color-svgrepo-com.svg" width="21px" alt=""> </div>
+                            <div class="col-md-9 d-flex justify-content-start mr-5"><a
+                                    href="https://wa.me/+905326266756" target="_blank"> WhatsApp</a></div>
+                        </div>
+
+                        <div class="ibanbtn btn  w-100 mt-2 d-flex justify-content-center align-items-center col-md-12">
+                            <div class="col-md-3 d-flex justify-content-end pr-2"> <img src="bank-card-svgrepo-com.svg"
+                                    width="24px" alt=""></div>
+                            <div class="col-md-9 d-flex justify-content-start  mr-5 pr-2 pl-0"> <a href="iban.html"
+                                    target="_blank"> &nbsp; İban bilgileri</a></div>
+                        </div>
+
+                        <div class="ibanbtn btn  w-100 mt-2 d-flex justify-content-center align-items-center col-md-12">
+                            <div class="col-md-3 d-flex justify-content-end pr-2"> <img
+                                    src="mail-reception-svgrepo-com.svg" width="24px" alt=""> </div>
+                            <div class="col-md-9 d-flex justify-content-start  mr-5 pr-2 pl-0"> <button
+                                    class="ibanbtn  bordersfs" onclick="sendMail()">
+                                    Mail
+                                    Adresi</button> </div>
+                        </div>
+
+                        <!-- Diğer sosyal medya butonları buraya eklenebilir -->
+                    </div>
+
+                    <!-- Yol tarifi al butonu -->
+                    <div class="ibanbtn btn  w-100 mt-2 d-flex justify-content-center align-items-center col-md-12">
+
+                        <div class="col-md-3 d-flex justify-content-end pr-2">     <img src="location-svgrepo-com.svg" width="24px" alt=""> </div>
+                        <div class="col-md-9 d-flex justify-content-start  mr-5 pr-2 pl-0">  <a href="https://www.google.com/maps?s=web&lqi=CgtuYXphciBvcHRpa0iJvKjT55WAgAhaHRAAEAEYABgBIgtuYXphciBvcHRpayoGCAIQABABkgEIb3B0aWNpYW6qAUYQASoPIgtuYXphciBvcHRpayghMiAQASIc7Xwxb-QTh8_83TaUYUKN7oDAkwg9WJcEE6IUwzIPEAIiC25hemFyIG9wdGlr&vet=12ahUKEwji7aa54JmEAxUd_rsIHSiLAi4Q1YkKegQIDxAB..i&cs=0&um=1&ie=UTF-8&fb=1&gl=tr&sa=X&geocode=KaXL7qh18ycVMQ9S5ObpT0Mr&daddr=%C4%B0hsaniye,+Sait+%C3%87ift%C3%A7i+Cd.+No:3,+33070+Akdeniz/Mersin"
+                          target="_blank"> &nbsp;
+                            Yol
+                            Tarifi Al</a></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="hoşgeldiniz" id="hoşgeldiniz-mesajı"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var hoşgeldinizDiv = document.getElementById("hoşgeldiniz-mesajı");
+            var hoşgeldinizMetni = "Merhaba! Nazar Optiğe, Hoşgeldiniz. Sağlıklı Günler Dilerim !";
+
+            // Her harfi yavaşça ekrana yazdırma fonksiyonu
+            function yazdırHarfler(metin, hedefElement, index) {
+                if (index < metin.length) {
+                    hedefElement.innerHTML += metin.charAt(index);
+                    index++;
+                    setTimeout(function () {
+                        yazdırHarfler(metin, hedefElement, index);
+                    }, 100); // Her harfi 100 milisaniye aralıklarla yazdır
+                } else {
+                    // Yazdırma tamamlandıktan sonra mesajı kaldır
+                    setTimeout(function () {
+                        hedefElement.style.display = "none";
+                    }, 1000); // Örnek olarak 1 saniye sonra mesajı kaldır
+                }
+            }
+
+            // Yazdırma işlemini başlat
+            yazdırHarfler(hoşgeldinizMetni, hoşgeldinizDiv, 0);
+        });
+
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add("show");
+        });
+    </script>
+
     <script>
         function sendMail() {
             window.location.href = 'mailto:serdartuncu@hotmail.com?subject=Konu&body=Merhaba nazar optik.';
